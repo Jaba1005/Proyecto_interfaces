@@ -4,6 +4,12 @@ session_start();
 $BASE_URL = "http://localhost/Proyecto_Interfaces/";
 include_once "../Controlador/conexion.php";
 
+// Verificación simple de sesión
+if (!isset($_SESSION["usuario"])) {
+    header("Location: ../Vista/login.php");
+    exit();
+}
+
 /* =========================
    HELPERS
 ========================= */

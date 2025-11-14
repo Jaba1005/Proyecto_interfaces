@@ -2,6 +2,12 @@
 include("../controlador/conexion.php");
 $BASE_URL = "http://localhost/Proyecto_Interfaces/";
 
+// Verificación simple de sesión
+if (!isset($_SESSION["usuario"])) {
+    header("Location: ../Vista/login.php");
+    exit();
+}
+
 $mensaje = "";
 $tipo_mensaje = "";
 
