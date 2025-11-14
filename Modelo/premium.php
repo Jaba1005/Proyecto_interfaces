@@ -9,15 +9,6 @@
 <body>
   <header>
     <h1>Planes disponibles 🌟</h1>
-    <nav>
-      <ul>
-        <li><a href="menu.php">Inicio</a></li>
-        <li><a href="frutas.php">Frutas</a></li>
-        <li><a href="verduras.php">Verduras</a></li>
-        <li><a href="temporada.php">Temporada</a></li>
-        <li><a href="premium.php">Premium</a></li>
-      </ul>
-    </nav>
   </header>
 
   <main>
@@ -78,5 +69,12 @@ if (isset($_SESSION['id'])) {
     header("Location: premium.php");
     exit();
 }
+
+// Verificación simple de sesión
+if (!isset($_SESSION["usuario"])) {
+    header("Location: ../Vista/login.php");
+    exit();
+}
+
 $BASE_URL = "http://localhost/Proyecto_Interfaces/";
 ?>

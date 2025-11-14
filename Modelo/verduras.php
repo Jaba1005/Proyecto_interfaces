@@ -14,13 +14,6 @@
 <body>
   <header>
     <h1>Verduras en Colombia</h1>
-    <nav>
-      <ul>
-        <li><a href="menu.php">Inicio</a></li>
-        <li><a href="frutas.php">Frutas</a></li>
-        <li><a href="temporada.php">Temporada</a></li>
-      </ul>
-    </nav>
   </header>
 
   <main>
@@ -60,6 +53,12 @@ session_start();
 // Si el usuario ya está logueado, redirigir a menu.php
 if (isset($_SESSION['id'])) {
     header("Location: verduras.php");
+    exit();
+}
+
+// Verificación simple de sesión
+if (!isset($_SESSION["usuario"])) {
+    header("Location: ../Vista/login.php");
     exit();
 }
 $BASE_URL = "http://localhost/Proyecto_Interfaces/";

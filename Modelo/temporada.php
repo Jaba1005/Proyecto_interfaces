@@ -47,13 +47,6 @@
 <body>
   <header>
     <h1>Frutas y Verduras de Temporada en Colombia</h1>
-    <nav>
-      <ul>
-        <li><a href="menu.php">Inicio</a></li>
-        <li><a href="frutas.php">Frutas</a></li>
-        <li><a href="verduras.htmphpl">Verduras</a></li>
-      </ul>
-    </nav>
   </header>
 
   <main>
@@ -185,5 +178,12 @@ if (isset($_SESSION['id'])) {
     header("Location: temporada.php");
     exit();
 }
+
+// Verificación simple de sesión
+if (!isset($_SESSION["usuario"])) {
+    header("Location: ../Vista/login.php");
+    exit();
+}
+
 $BASE_URL = "http://localhost/Proyecto_Interfaces/";
 ?>
