@@ -1,3 +1,20 @@
+<?php
+session_start();
+
+// Validación de sesión: si NO existe el usuario → redirigir a login
+if (!isset($_SESSION["usuario"])) {
+    header("Location: ../Vista/login.php");
+    exit();
+}
+
+// Si quieres redirigir si ya tiene ID (por ejemplo para premium), activa esta línea:
+// if (isset($_SESSION['id'])) {
+//     header("Location: premium.php");
+//     exit();
+// }
+
+$BASE_URL = "http://localhost/Proyecto_Interfaces/";
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -60,21 +77,3 @@
   </footer>
 </body>
 </html>
-
-<?php
-session_start();
-
-// Si el usuario ya está logueado, redirigir a menu.php
-if (isset($_SESSION['id'])) {
-    header("Location: premium.php");
-    exit();
-}
-
-// Verificación simple de sesión
-if (!isset($_SESSION["usuario"])) {
-    header("Location: ../Vista/login.php");
-    exit();
-}
-
-$BASE_URL = "http://localhost/Proyecto_Interfaces/";
-?>
