@@ -2,8 +2,7 @@
 session_start();
 $BASE_URL = "http://localhost/Proyecto_Interfaces/Vista/login.php";
 
-// Redirigir si ya hay sesión iniciada
-if (isset($_SESSION['id_usuario'])) {
+if (isset($_SESSION['id'])) {
     header("Location: ../modelo/menu.php");
     exit();
 }
@@ -13,8 +12,8 @@ include("../Controlador/conexion.php");
 $error = "";
 
 if (isset($_POST['login'])) {
-    $usuario = trim($_POST['usuario']);
-    $clave = trim($_POST['clave']);
+    $usuario = $_POST['usuario'];
+    $clave = $_POST['clave'];
 
     // Usando prepared statements para seguridad
     $stmt = $conn->prepare("SELECT * FROM datos WHERE usuario = ?");
@@ -25,14 +24,13 @@ if (isset($_POST['login'])) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
 
-        // Validación de contraseña tal como estaba
         if ($clave === $row['clave']) {
-            // Guardamos datos importantes en sesión (corregidos nombres consistentes)
-            $_SESSION['id_usuario'] = $row['id'];        // antes $_SESSION['id']
+            // Guardamos datos importantes en sesión
+            $_SESSION['id'] = $row['id'];
             $_SESSION['usuario'] = $row['usuario'];
             $_SESSION['id_perfil'] = $row['id_perfil'];
-            $_SESSION['nombre'] = $row['nombre'];        // si tienes campo nombre
-            $_SESSION['email'] = $row['email'];          // si tienes campo email
+            $_SESSION['nombre'] = $row['nombre']; // si tienes un campo nombre
+            $_SESSION['email'] = $row['email'];   // si tienes un campo email
 
             header("Location: ../modelo/menu.php");
             exit();
@@ -67,12 +65,13 @@ if (isset($_POST['login'])) {
       background: #2d6a4f;
       padding: 20px;
       text-align: center;
-      color: white;
+      color: white; /* texto en blanco */
       font-size: 26px;
       font-weight: bold;
       box-shadow: 0 3px 8px rgba(0,0,0,0.25);
     }
 
+    /* CONTENEDOR CENTRAL */
     .container {
       flex: 1;
       display: flex;
@@ -81,6 +80,7 @@ if (isset($_POST['login'])) {
       padding: 30px;
     }
 
+    /* CAJA LOGIN */
     .login-box {
       background: white;
       padding: 40px;
@@ -129,6 +129,7 @@ if (isset($_POST['login'])) {
       transform: scale(1.02);
     }
 
+    /* ALERTAS LINDAS */
     .alert {
       padding: 12px;
       border-radius: 8px;

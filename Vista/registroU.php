@@ -7,7 +7,6 @@ if (!isset($_SESSION["usuario"])) {
     header("Location: ../Vista/login.php");
     exit();
 }
-
 $mensaje = "";
 $tipo_mensaje = "";
 
