@@ -1,4 +1,5 @@
-De lo que pide el profe ya esta haceho:
+De lo que pide el profe ya esta hecho:
+
   1-Verifica que la aplicación controle el acceso de usuarios no 
     registrados, gestione el inicio de sesión de forma segura e identifique 
     correctamente al usuario activo
@@ -29,3 +30,5 @@ FALTA
   2-Agregar informacion en las paginas
 
   3-Cambiar el estilo (Si quieres)
+
+  4-Hacer el texto que el profe pide
